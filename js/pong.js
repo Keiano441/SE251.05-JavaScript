@@ -8,26 +8,26 @@ var timer = setInterval(main, 1000/60)
 //global friction variable 
 var fy = .97
 
-// player array
+// player array (renamed to avoid conflict with class)
 var players = [];
 
-player[0] = new player("Player 1");
-player[0].pad = new Box();
-player[0].pad.w = 20;
-player[0].pad.h = 150;
-player[0].pad.x = 0 + player[0].pad.w / 2;
-player[0].pad.color = "blue";
+players[0] = new player("Player 1");
+players[0].pad = new Box();
+players[0].pad.w = 20;
+players[0].pad.h = 150;
+players[0].pad.x = 0 + players[0].pad.w / 2;
+players[0].pad.color = "blue";
 
-player[1] = new player("Player 2");
-player[1].pad = new Box();
-player[1].pad.w = 20;
-player[1].pad.h = 150;
-player[1].pad.x = c.width - player[1].pad.w / 2;
-player[1].pad.color = "orange";
+players[1] = new player("Player 2");
+players[1].pad = new Box();
+players[1].pad.w = 20;
+players[1].pad.h = 150;
+players[1].pad.x = c.width - players[1].pad.w / 2;
+players[1].pad.color = "orange";
 
 var pad = [];
-pad[0] = player[0].pad;
-pad[1] = player[1].pad;
+pad[0] = players[0].pad;
+pad[1] = players[1].pad;
 
 //ball setup
 var ball = new Box();
@@ -102,8 +102,8 @@ function main()
     // Left side — Player 2 scores
     if(ball.x < 0)
     {
-        player[1].score++;
-        console.log(player[0].score + " | " + player[1].score);
+        players[1].score++;
+        console.log(players[0].score + " | " + players[1].score);
 
         // reset ball to center
         ball.x = c.width/2;
@@ -118,8 +118,8 @@ function main()
     // Right side — Player 1 scores
     if(ball.x > c.width)
     {
-        player[0].score++;
-        console.log(player[0].score + " | " + player[1].score);
+        players[0].score++;
+        console.log(players[0].score + " | " + players[1].score);
 
         // reset ball to center
         ball.x = c.width/2;
