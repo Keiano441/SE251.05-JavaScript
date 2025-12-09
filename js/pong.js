@@ -99,7 +99,6 @@ function main()
 
     //ball collision with walls
 
-    //ball collision with walls
 
     // Left side — Player 2 scores
     if(ball.x < 0)
