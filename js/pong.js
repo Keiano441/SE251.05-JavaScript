@@ -25,7 +25,6 @@ player[1].pad.h = 150;
 player[1].pad.x = c.width - player[1].pad.w / 2;
 player[1].pad.color = "orange";
 
-// pad array to store the paddles
 var pad = [];
 pad[0] = player[0].pad;
 pad[1] = player[1].pad;
@@ -100,21 +99,37 @@ function main()
 
     //ball collision with walls
 
-    // Left side — reset to center
+    //ball collision with walls
+
+    // Left side — Player 2 scores
     if(ball.x < 0)
     {
-        ball.x = c.width/2
-        ball.y = c.height/2
+    player[1].score++;
+    console.log(`${player[0].score} | ${player[1].score}`);
+
+    // reset ball
+    ball.x = c.width/2;
+    ball.y = c.height/2;
+
+    // send ball toward scoring player
+    ball.vx = Math.abs(ball.vx);
     }
 
-    //right side — reset to center
+
+    // Right side — Player 1 scores
     if(ball.x > c.width)
     {
-        ball.x = c.width/2
-        ball.y = c.height/2
+    player[0].score++;
+    console.log(`${player[0].score} | ${player[1].score}`);
 
-        if (ball.vx > 0) ball.vx = -Math.abs(ball.vx)
+    // reset ball
+    ball.x = c.width/2;
+    ball.y = c.height/2;
+
+    // send ball toward scoring player
+    ball.vx = -Math.abs(ball.vx);
     }
+
 
     // Top / Bottom — bounce
     if(ball.y < 0)
@@ -140,7 +155,6 @@ function main()
     {
         ball.x = pad[1].x - pad[1].w/2 - ball.w/2;
 
-        // reverse direction and ensure it goes LEFT
         ball.vx = -Math.abs(ball.vx);
     }
 
