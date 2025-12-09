@@ -9,7 +9,7 @@ var timer = setInterval(main, 1000/60)
 var fy = .97
 
 // player array
-var player = [];
+var players = [];
 
 player[0] = new player("Player 1");
 player[0].pad = new Box();
