@@ -29,6 +29,23 @@ ball.vx = -2
 ball.vy = -2
 ball.color = `black`
 
+// player array
+var player = [];
+
+player[0] = new Player("Player 1");
+player[0].pad = new Box();
+player[0].pad.w = 20;
+player[0].pad.h = 150;
+player[0].pad.x = 20;
+player[0].pad.color = "blue";
+
+player[1] = new Player("Player 2");
+player[1].pad = new Box();
+player[1].pad.w = 20;
+player[1].pad.h = 150;
+player[1].pad.x = c.width - 20;
+player[1].pad.color = "orange";
+
 function main()
 {
     //erases the canvas
