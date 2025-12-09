@@ -129,11 +129,12 @@ function main()
     }
 
     //p2 with ball collision 
-    if(ball.collide(p2))
+    if (ball.collide(p2)) 
     {
-        ball.x = p2.x + p2.w/2 + ball.w/2
-        ball.vx = -Math.abs(ball.vx)
-      
+    ball.x = p2.x - p2.w/2 - ball.w/2;
+
+    // reverse direction and ensure it goes LEFT
+    ball.vx = -Math.abs(ball.vx);
     }
 
     //DRAW 
