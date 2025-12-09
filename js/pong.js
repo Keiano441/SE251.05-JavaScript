@@ -99,36 +99,37 @@ function main()
 
     //ball collision with walls
 
-
     // Left side — Player 2 scores
     if(ball.x < 0)
     {
-    player[1].score++;
-    console.log(`${player[0].score} | ${player[1].score}`);
+        player[1].score++;
+        console.log(player[0].score + " | " + player[1].score);
 
-    // reset ball
-    ball.x = c.width/2;
-    ball.y = c.height/2;
+        // reset ball to center
+        ball.x = c.width/2;
+        ball.y = c.height/2;
 
-    // send ball toward scoring player
-    ball.vx = Math.abs(ball.vx);
+        // send ball toward Player 1 (right)
+        if (ball.vx < 0) {
+            ball.vx = -ball.vx;
+        }
     }
-
 
     // Right side — Player 1 scores
     if(ball.x > c.width)
     {
-    player[0].score++;
-    console.log(`${player[0].score} | ${player[1].score}`);
+        player[0].score++;
+        console.log(player[0].score + " | " + player[1].score);
 
-    // reset ball
-    ball.x = c.width/2;
-    ball.y = c.height/2;
+        // reset ball to center
+        ball.x = c.width/2;
+        ball.y = c.height/2;
 
-    // send ball toward scoring player
-    ball.vx = -Math.abs(ball.vx);
+        // send ball toward Player 2 (left)
+        if (ball.vx > 0) {
+            ball.vx = -ball.vx;
+        }
     }
-
 
     // Top / Bottom — bounce
     if(ball.y < 0)
@@ -153,7 +154,6 @@ function main()
     if (ball.collide(pad[1])) 
     {
         ball.x = pad[1].x - pad[1].w/2 - ball.w/2;
-
         ball.vx = -Math.abs(ball.vx);
     }
 
