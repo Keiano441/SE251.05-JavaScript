@@ -8,14 +8,13 @@ var timer = setInterval(main, 1000/60)
 //global friction variable 
 var fy = .97
 
-// player array (renamed to avoid conflict with class)
-var players = [];
+var player = [];
 
-players[0] = new players("Player 1");
+players[0] = new Player("Player 1");
 players[0].pad = new Box();
 players[0].pad.w = 20;
 players[0].pad.h = 150;
-players[0].pad.x = 0 + players[0].pad.w / 2;
+players[0].pad.x = 0 + player[0].pad.w / 2;
 players[0].pad.color = "blue";
 
 players[1] = new players("Player 2");

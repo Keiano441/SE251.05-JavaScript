@@ -1,4 +1,4 @@
-class player {
+class Player {
     constructor(name, pad) {
         this.name = name;
         this.score = 0;

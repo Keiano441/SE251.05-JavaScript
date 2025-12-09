@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.post{
+    border:1px solid black;
+    margin-bottom:10px;
+    
+}
+
+#output{
+    display:flex;
+    flex-direction: column-reverse;
+}
+
+.hidden{
+    display:none;
+}
+
