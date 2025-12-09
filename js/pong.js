@@ -11,14 +11,14 @@ var fy = .97
 // player array
 var player = [];
 
-player[0] = new Player("Player 1");
+player[0] = new player("Player 1");
 player[0].pad = new Box();
 player[0].pad.w = 20;
 player[0].pad.h = 150;
 player[0].pad.x = 0 + player[0].pad.w / 2;
 player[0].pad.color = "blue";
 
-player[1] = new Player("Player 2");
+player[1] = new player("Player 2");
 player[1].pad = new Box();
 player[1].pad.w = 20;
 player[1].pad.h = 150;
@@ -63,8 +63,8 @@ function main()
     }
 
     //applies friction 
-    pad[0].vy *= fy
-    pad[1].vy *= fy   
+    pad[0].vy *= fy;
+    pad[1].vy *= fy;  
 
     //player movement
     pad[0].move();
@@ -126,7 +126,8 @@ function main()
         ball.y = c.height/2;
 
         // send ball toward Player 2 (left)
-        if (ball.vx > 0) {
+        if (ball.vx > 0) 
+        {
             ball.vx = -ball.vx;
         }
     }
