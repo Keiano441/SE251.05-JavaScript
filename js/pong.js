@@ -8,18 +8,27 @@ var timer = setInterval(main, 1000/60)
 //global friction variable 
 var fy = .97
 
-//p1 setup
-var p1 = new Box();
-p1.w = 20
-p1.h = 150
-p1.x = 0 + p1.w/2
+// player array
+var player = [];
 
-//p2 setup 
-var p2 = new Box();
-p2.w = 20
-p2.h = 150
-p2.x = c.width - p2.w/2        
-p2.color = `orange`             
+player[0] = new Player("Player 1");
+player[0].pad = new Box();
+player[0].pad.w = 20;
+player[0].pad.h = 150;
+player[0].pad.x = 0 + player[0].pad.w / 2;
+player[0].pad.color = "blue";
+
+player[1] = new Player("Player 2");
+player[1].pad = new Box();
+player[1].pad.w = 20;
+player[1].pad.h = 150;
+player[1].pad.x = c.width - player[1].pad.w / 2;
+player[1].pad.color = "orange";
+
+// pad array to store the paddles
+var pad = [];
+pad[0] = player[0].pad;
+pad[1] = player[1].pad;
 
 //ball setup
 var ball = new Box();
@@ -29,80 +38,61 @@ ball.vx = -2
 ball.vy = -2
 ball.color = `black`
 
-// player array
-var player = [];
-
-player[0] = new Player("Player 1");
-player[0].pad = new Box();
-player[0].pad.w = 20;
-player[0].pad.h = 150;
-player[0].pad.x = 20;
-player[0].pad.color = "blue";
-
-player[1] = new Player("Player 2");
-player[1].pad = new Box();
-player[1].pad.w = 20;
-player[1].pad.h = 150;
-player[1].pad.x = c.width - 20;
-player[1].pad.color = "orange";
-
 function main()
 {
     //erases the canvas
     ctx.clearRect(0,0,c.width,c.height)
     
-
-    //p1 accelerates when key is pressed 
+    //pad[0] (Player 1) accelerates when key is pressed 
     if(keys[`w`])
     {
-       p1.vy += -p1.force
+       pad[0].vy += -pad[0].force
     }
     if(keys[`s`])
     {
-        p1.vy += p1.force
+        pad[0].vy += pad[0].force
     }
 
-    //p2 Arrow key acceleration
+    //pad[1] (Player 2) Arrow key acceleration
     if(keys[`ArrowUp`])
     {
-        p2.vy += -p2.force
+        pad[1].vy += -pad[1].force
     }
     if(keys[`ArrowDown`])
     {
-        p2.vy += p2.force
+        pad[1].vy += pad[1].force
     }
 
     //applies friction 
-    p1.vy *= fy
-    p2.vy *= fy   
+    pad[0].vy *= fy
+    pad[1].vy *= fy   
 
     //player movement
-    p1.move();
-    p2.move();    
+    pad[0].move();
+    pad[1].move();    
 
+    //pad[0] collision with canvas
+    if(pad[0].y < 0 + pad[0].h/2)
+    {
+        pad[0].y = 0 + pad[0].h/2
+        pad[0].vy = 0
+    }
+    if(pad[0].y > c.height - pad[0].h/2)
+    {
+        pad[0].y = c.height - pad[0].h/2
+        pad[0].vy = 0
+    }
 
-    //p1 collision with canvas
-    if(p1.y < 0+p1.h/2)
+    //pad[1] collision with canvas 
+    if(pad[1].y < 0 + pad[1].h/2)
     {
-        p1.y = 0+p1.h/2
-        p1.vy = 0
+        pad[1].y = 0 + pad[1].h/2
+        pad[1].vy = 0
     }
-    if(p1.y > c.height-p1.h/2)
+    if(pad[1].y > c.height - pad[1].h/2)
     {
-        p1.y = c.height-p1.h/2
-        p1.vy = 0
-    }
-
-    //p2 collision with canvas 
-    if(p2.y < 0+p2.h/2)
-    {
-        p2.y = 0+p2.h/2
-        p2.vy = 0
-    }
-    if(p2.y > c.height-p2.h/2)
-    {
-        p2.y = c.height-p2.h/2
-        p2.vy = 0
+        pad[1].y = c.height - pad[1].h/2
+        pad[1].vy = 0
     }
 
     //ball movement
@@ -110,7 +100,7 @@ function main()
 
     //ball collision with walls
 
-    // Left side — your starter already resets to center (keep it)
+    // Left side — reset to center
     if(ball.x < 0)
     {
         ball.x = c.width/2
@@ -126,7 +116,7 @@ function main()
         if (ball.vx > 0) ball.vx = -Math.abs(ball.vx)
     }
 
-    // Top / Bottom — bounce (unchanged)
+    // Top / Bottom — bounce
     if(ball.y < 0)
     {
         ball.y = 0
@@ -138,24 +128,24 @@ function main()
         ball.vy = -ball.vy
     }
 
-    //p1 with ball collision 
-    if(ball.collide(p1))
+    //pad[0] with ball collision 
+    if(ball.collide(pad[0]))
     {
-        ball.x = p1.x + p1.w/2 + ball.w/2
+        ball.x = pad[0].x + pad[0].w/2 + ball.w/2
         ball.vx = -ball.vx;
     }
 
-    //p2 with ball collision 
-    if (ball.collide(p2)) 
+    //pad[1] with ball collision 
+    if (ball.collide(pad[1])) 
     {
-    ball.x = p2.x - p2.w/2 - ball.w/2;
+        ball.x = pad[1].x - pad[1].w/2 - ball.w/2;
 
-    // reverse direction and ensure it goes LEFT
-    ball.vx = -Math.abs(ball.vx);
+        // reverse direction and ensure it goes LEFT
+        ball.vx = -Math.abs(ball.vx);
     }
 
     //DRAW 
-    p1.draw()
-    p2.draw() 
+    pad[0].draw()
+    pad[1].draw() 
     ball.draw()
 }
