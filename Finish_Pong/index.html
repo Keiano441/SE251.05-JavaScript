@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PONG</title>
+    <link rel="stylesheet" href="pong.css">
+</head>
+<body>
+    <main>
+        <section id="game">
+            <div id="score">
+                <div>
+                    <p class="score">0</p>
+                    <!--<p class="anim">0</p>-->
+                </div>
+                <div>
+                    <p class="score">0</p>
+                    <!--<p class="anim">0</p>-->
+                </div>
+            </div>
+            <canvas id="pong" width="800" height="800"></canvas>
+        </section>
+        <section id="options"></div>
+            <h2>Options</h2>
+            <div class="sides">
+                <div class="op">
+                    <h2>Player 1</h2><div></div> <div></div>
+                    <label>FILL</label><input class="fill" type="color"><div class="output"></div>
+                    <label>STROKE</label><input class="stroke" type="color"><div class="output"></div>
+                    <label>UP</label><input class="u" type="text" maxlength="1"><div class="output"></div>
+                    <label>DOWN</label><input class="d" type="text" maxlength="1"><div class="output"></div>
+                    <label>STRAIGHT</label><input class="s" type="text" maxlength="1"><div class="output"></div>
+                </div>
+                <div class="op">
+                    <h2>Player 2</h2> <div></div><div class="output"></div>
+                    <label>FILL</label><input class="fill" type="color"><div class="output"></div>
+                    <label>STROKE</label><input class="stroke" type="color"><div class="output"></div>
+                    <label>UP</label><input class="u" type="text" maxlength="1"><div class="output"></div>
+                    <label>DOWN</label><input class="d" type="text" maxlength="1"><div class="output"></div>
+                    <label>STRAIGHT</label><input class="s" type="text" maxlength="1"><div class="output"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/User.js"></script>
+    <script src="js/Box.js"></script>
+    <script src="js/keyboard.js"></script>
+    <script src="js/pong.js"></script>
+    <script src="js/options.js"></script>
+    
+        
+ 
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Week 2 Lab</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<script type="text/javascript" src="week2.js"></script>
+</head>
+
+<body>
+
+<div id="form">
+    <form name="info" onsubmit="return false;">
+        <p>
+            <label for="first-name" id="label-fn" class="normal">First Name</label><br />
+            <input type="text" id="first-name"/> 
+            <span id="fn-error"></span>
+        </p>
+        
+        <p>
+            <label for="last-name" id="label-ln" class="normal">Last Name</label><br />
+            <input type="text" id="last-name"/> 
+            <span id="ln-error"></span>
+        </p>
+        
+        <p>
+            <label for="email" id="label-email" class="normal">Email</label><br />
+            <input type="text" id="email"/> 
+            <span id="email-error"></span>
+        </p>
+
+        <p>
+            <label for="email-confirm" id="label-email-confirm" class="normal">Confirm Email</label><br />
+            <input type="text" id="email-confirm"/> 
+            <span id="email-confirm-error"></span>
+        </p>
+        
+        <p>
+            <label for="phone" id="label-phone" class="normal">Phone Number</label><br />
+            <input type="text" id="phone"/> 
+            <span id="phone-error"></span>
+        </p>
+        
+        <input type="button" value="submit" id="submit-btn" />
+    </form>
+</div>
+
+<div id="confirmation">
+	<h1>Confirmation</h1>
+    <p id="info"></p>
+</div>
+
+</body>
+</html>
